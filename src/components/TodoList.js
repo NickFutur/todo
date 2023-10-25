@@ -1,19 +1,16 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
-const TodoList = () => {
-  const items = ["Exe. 1", "Exe. 2"];
-  return (
-    <ul>
-      {/* <li>{items[0]}</li>
-      <li>{items[1]}</li> */}
+const TodoList = ({ todos }) => {
+  const listElements = todos.map((item) => {
+    return (
       <li>
-        <TodoListItem />
+        {/* <TodoListItem label={item.label} important={item.important} /> */}
+        <TodoListItem {...item} />{" "}
+        {/*это Spread операция, которую можно записать, как в примере выше, но этот метод короче + названия ключей совпадают (label и label)*/}
       </li>
-      <li>
-        <TodoListItem />
-      </li>
-    </ul>
-  );
+    );
+  });
+  return <ul>{listElements}</ul>;
 };
 
 export default TodoList;
